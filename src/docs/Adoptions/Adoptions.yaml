@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: Adoptions API
+  description: API for managing pet adoptions
+  version: 1.0.0
+paths:
+  /api/adoptions:
+    get:
+      summary: Get all adoptions
+      description: Retrieves a list of all adoptions
+      tags:
+        - Adoptions
+      responses:
+        '200':
+          description: A list of adoptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adoption'
+    post:
+      summary: Create an adoption
+      description: Create a new adoption record
+      tags:
+        - Adoptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAdoption'
+      responses:
+        '201':
+          description: Adoption created
+        '400':
+          description: Invalid input
+
+components:
+  schemas:
+    Adoption:
+      type: object
+      properties:
+        _id:
+          type: string
+        user_id:
+          type: string
+        pet_id:
+          type: string
+        date:
+          type: string
+          format: date-time
+    NewAdoption:
+      type: object
+      required:
+        - user_id
+        - pet_id
+      properties:
+        user_id:
+          type: string
+        pet_id:
+          type: string
+        date:
+          type: string
+          format: date-time
+          default: now

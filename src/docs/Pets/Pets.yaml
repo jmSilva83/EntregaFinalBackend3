@@ -1,0 +1,117 @@
+openapi: 3.0.1
+info:
+  title: Pets API
+  description: API for managing pets
+  version: 1.0.0
+paths:
+  /api/pets:
+    get:
+      summary: Get all pets
+      description: Retrieves a list of all pets
+      tags:
+        - Pets
+      responses:
+        '200':
+          description: A list of pets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+    post:
+      summary: Add a new pet
+      description: Adds a new pet to the system
+      tags:
+        - Pets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPet'
+      responses:
+        '201':
+          description: Pet created
+        '400':
+          description: Invalid input
+
+  /api/pets/{id}:
+    get:
+      summary: Get a specific pet by ID
+      description: Retrieve a pet by its unique ID
+      tags:
+        - Pets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pet found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '404':
+          description: Pet not found
+    put:
+      summary: Update a pet
+      description: Update an existing pet's information
+      tags:
+        - Pets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePet'
+      responses:
+        '200':
+          description: Pet updated
+        '404':
+          description: Pet not found
+
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        specie:
+          type: string
+        adopted:
+          type: boolean
+    NewPet:
+      type: object
+      required:
+        - name
+        - specie
+      properties:
+        name:
+          type: string
+        specie:
+          type: string
+        adopted:
+          type: boolean
+          default: false
+    UpdatePet:
+      type: object
+      properties:
+        name:
+          type: string
+        specie:
+          type: string
+        adopted:
+          type: boolean

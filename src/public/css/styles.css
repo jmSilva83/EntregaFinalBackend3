@@ -1,0 +1,63 @@
+/* Fondo de degradado en la página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a0dad, #333333);
+    color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background: rgba(50, 50, 50, 0.9);
+    padding: 15px 25px;
+    border-radius: 6px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    width: 90%;
+}
+
+/* Estilo de los elementos del formulario */
+form input[type='text'],
+form input[type='email'],
+form input[type='password'],
+form button {
+    width: 100%;
+    padding: 8px 0;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+}
+
+form input[type='text'],
+form input[type='email'],
+form input[type='password'] {
+    background-color: #444;
+    color: #ddd;
+    font-size: 0.9rem;
+}
+
+/* Estilo del botón */
+form button {
+    background-color: #6a0dad;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #5c0c92;
+}
+
+/* Texto del título */
+form h2 {
+    text-align: center;
+    color: #d0d0d0;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}

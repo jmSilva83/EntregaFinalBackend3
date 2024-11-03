@@ -1,0 +1,58 @@
+{
+    "name": "project-backend-3",
+    "version": "1.0.0",
+    "description": "Proyecto de adopción de mascotas",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/app.js -m prod",
+        "dev": "nodemon src/app.js -m dev",
+        "test": "mocha test/supertest.test.js"
+    },
+    "keywords": [
+        "adopción",
+        "mascotas",
+        "backend",
+        "express",
+        "mongoose"
+    ],
+    "author": "Juan Manuel Silva",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jmSilva83/1raPreentregaBackend3"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "@faker-js/faker": "^9.0.3",
+        "artillery-plugin-metrics-by-endpoint": "^1.15.0",
+        "bcrypt": "^5.1.1",
+        "commander": "^12.1.0",
+        "connect-mongo": "^5.1.0",
+        "cookie-parser": "^1.4.6",
+        "dotenv": "^16.4.5",
+        "ejs": "^3.1.10",
+        "express": "^4.21.1",
+        "express-compression": "^1.0.2",
+        "express-handlebars": "^8.0.1",
+        "handlebars": "^4.7.8",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.7.0",
+        "multer": "^1.4.5-lts.1",
+        "nodemailer": "^6.9.15",
+        "passport": "^0.7.0",
+        "passport-jwt": "^4.0.1",
+        "supertest": "^7.0.0",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1",
+        "winston": "^3.15.0"
+    },
+    "devDependencies": {
+        "artillery": "^2.0.21",
+        "chai": "^5.1.1",
+        "mocha": "^10.1.0",
+        "nodemon": "^3.1.7"
+    },
+    "engines": {
+        "node": ">=20.17.0"
+    }
+}
