@@ -21,4 +21,4 @@ AdoptMe es una aplicación backend desarrollada para la gestión de adopciones d
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/[tu-usuario]/adoptme-backend.git
+   git clone https://github.com/jmSilva83/EntregaFinalBackend3.git
