@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <div class="card-container">
+        {{#each pets}}
+            <div class="card">
+                <h3>{{this.name}}</h3>
+                <p><strong>Especie:</strong> {{this.specie}}</p>
+                <p><strong>Adoptado:</strong> {{#if this.adopted}}Sí{{else}}No{{/if}}</p>
+            </div>
+        {{/each}}
+    </div>
+    <a href="/" class="button">Volver a la página principal</a>
+</body>
+</html>

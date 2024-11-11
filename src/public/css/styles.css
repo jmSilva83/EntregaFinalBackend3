@@ -3,6 +3,54 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #333333, #000000);
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #ffffff; /* Para mejorar la visibilidad del texto */
+}
+
+/* Contenedor de tarjetas */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+
+/* Estilos de tarjeta */
+.card {
+    background-color: rgba(50, 50, 50, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Título de la tarjeta */
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #f0e6ff;
+}
+
+/* Texto de los detalles */
+.card p {
+    font-size: 0.9rem;
+    color: #cccccc;
 }
 
 /* Contenedor del formulario */
@@ -13,6 +61,7 @@ body {
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
     max-width: 350px;
     width: 90%;
+    text-align: center;
 }
 
 /* Estilo de los elementos del formulario */
@@ -46,6 +95,13 @@ form button:hover {
     background-color: #5c0c92;
 }
 
+/* Estilo de los enlaces dentro del formulario */
+form p a {
+    color: #6a0dad;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 /* Texto del título */
 form h2 {
     text-align: center;
@@ -53,15 +109,17 @@ form h2 {
     margin-bottom: 15px;
 }
 
-/* Estilo de enlaces */
-a {
-    color: #6a0dad;
-    text-decoration: none;
-    font-weight: bold;
+form p a:hover {
+    color: #5c0c92;
 }
 
-a:hover {
-    color: #5c0c92;
+* Contenedor de botones en la página de bienvenida */
+.button-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 /* Estilo de los botones genéricos */
@@ -73,6 +131,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
 button:hover {
@@ -80,8 +139,7 @@ button:hover {
 }
 
 /* Títulos de las páginas */
-h1,
-h2,
-h3 {
+h1, h2 {
     text-align: center;
+    color: #ffffff;
 }
