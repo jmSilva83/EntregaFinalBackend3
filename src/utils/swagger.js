@@ -1,6 +1,6 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import { dirname } from 'path';
+import path from 'path';
 import __dirname from './utils.js';
 
 const swaggerOptions = {
@@ -12,7 +12,7 @@ const swaggerOptions = {
             description: 'Documentación de la API de Adoptame',
         },
     },
-    apis: [`${dirname(__dirname)}/docs/**/*.yaml`],
+    apis: [path.join(__dirname, '/docs/**/*.yaml')],
 };
 
 const swaggerSpecs = swaggerJsdoc(swaggerOptions);

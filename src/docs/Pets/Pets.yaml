@@ -19,6 +19,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Pet'
+        '500':
+          description: Internal server error
+
     post:
       summary: Add a new pet
       description: Adds a new pet to the system
@@ -35,6 +38,8 @@ paths:
           description: Pet created
         '400':
           description: Invalid input
+        '500':
+          description: Internal server error
 
   /api/pets/{id}:
     get:
@@ -57,6 +62,9 @@ paths:
                 $ref: '#/components/schemas/Pet'
         '404':
           description: Pet not found
+        '500':
+          description: Internal server error
+
     put:
       summary: Update a pet
       description: Update an existing pet's information
@@ -79,39 +87,71 @@ paths:
           description: Pet updated
         '404':
           description: Pet not found
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
 
 components:
   schemas:
     Pet:
       type: object
+      description: "An object that represents a pet in the system."
       properties:
         _id:
           type: string
+          description: "The unique identifier for the pet."
         name:
           type: string
+          description: "The name of the pet."
         specie:
           type: string
+          description: "The species of the pet (e.g., 'dog', 'cat')."
         adopted:
           type: boolean
+          description: "Indicates whether the pet has been adopted."
+      example:
+        _id: "60a7b8c0d2a5b5d3b8a4e9a5"
+        name: "Buddy"
+        specie: "dog"
+        adopted: true
+    
     NewPet:
       type: object
+      description: "An object that represents the data required to create a new pet."
       required:
         - name
         - specie
       properties:
         name:
           type: string
+          description: "The new pet's name."
         specie:
           type: string
+          description: "The new pet's species."
         adopted:
           type: boolean
+          description: "Indicates whether the pet is adopted. Defaults to 'false' if not specified."
           default: false
+      example:
+        name: "Mittens"
+        specie: "cat"
+        adopted: false
+
     UpdatePet:
       type: object
+      description: "An object that contains the data that can be updated for an existing pet."
       properties:
         name:
           type: string
+          description: "The updated name of the pet."
         specie:
           type: string
+          description: "The updated species of the pet."
         adopted:
           type: boolean
+          description: "Indicates whether the pet is adopted."
+      example:
+        name: "Charlie"
+        specie: "dog"
+        adopted: true

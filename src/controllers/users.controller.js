@@ -3,9 +3,10 @@ import { usersService } from '../services/index.js';
 const getAllUsers = async (req, res) => {
     try {
         const { limit = 5, page = 1 } = req.query;
+        const skip = (page - 1) * limit;
         const result = await usersService.getAll({
             limit: parseInt(limit),
-            page: parseInt(page),
+            skip: skip,
         });
 
         res.send({

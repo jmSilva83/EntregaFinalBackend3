@@ -19,6 +19,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Adoption'
+        '500':
+          description: Internal server error
+
     post:
       summary: Create an adoption
       description: Create a new adoption record
@@ -32,35 +35,80 @@ paths:
               $ref: '#/components/schemas/NewAdoption'
       responses:
         '201':
-          description: Adoption created
+          description: Adoption created successfully
         '400':
           description: Invalid input
+        '500':
+          description: Internal server error
+
+  /api/adoptions/{id}:
+    get:
+      summary: Get a specific adoption by ID
+      description: Retrieve an adoption record by its unique ID
+      tags:
+        - Adoptions
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Adoption record found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Adoption'
+        '404':
+          description: Adoption not found
+        '500':
+          description: Internal server error
 
 components:
   schemas:
     Adoption:
       type: object
+      description: "An object that represents an adoption record in the system."
       properties:
         _id:
           type: string
+          description: "The unique identifier for the adoption."
         user_id:
           type: string
+          description: "The unique identifier of the user who adopted the pet."
         pet_id:
           type: string
+          description: "The unique identifier of the pet that was adopted."
         date:
           type: string
           format: date-time
+          description: "The date and time when the adoption took place."
+      example:
+        _id: "60a7b8c0d2a5b5d3b8a4e9a6"
+        user_id: "60a7b8c0d2a5b5d3b8a4e9a4"
+        pet_id: "60a7b8c0d2a5b5d3b8a4e9a5"
+        date: "2024-11-06T12:00:00Z"
+
     NewAdoption:
       type: object
+      description: "An object that represents the required data to create a new adoption record."
       required:
         - user_id
         - pet_id
       properties:
         user_id:
           type: string
+          description: "The unique identifier of the user who is adopting the pet."
         pet_id:
           type: string
+          description: "The unique identifier of the pet being adopted."
         date:
           type: string
           format: date-time
-          default: now
+          description: "The date and time when the adoption is recorded. Defaults to the current date and time if not provided."
+          default: "now"
+      example:
+        user_id: "60a7b8c0d2a5b5d3b8a4e9a4"
+        pet_id: "60a7b8c0d2a5b5d3b8a4e9a5"
+        date: "2024-11-06T12:00:00Z"

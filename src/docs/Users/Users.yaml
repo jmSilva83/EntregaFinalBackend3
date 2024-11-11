@@ -19,6 +19,18 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "An error occurred while fetching the users."
+
     post:
       summary: Create a new user
       description: Adds a new user to the database
@@ -32,9 +44,33 @@ paths:
               $ref: '#/components/schemas/NewUser'
       responses:
         '201':
-          description: User created
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
         '400':
-          description: Invalid input
+          description: Invalid input data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "Invalid user data provided."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "An error occurred while creating the user."
 
   /api/users/{id}:
     get:
@@ -57,6 +93,27 @@ paths:
                 $ref: '#/components/schemas/User'
         '404':
           description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "User not found."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "An error occurred while fetching the user."
+
     put:
       summary: Update a user
       description: Modify an existing user's information
@@ -76,31 +133,82 @@ paths:
               $ref: '#/components/schemas/UpdateUser'
       responses:
         '200':
-          description: User updated
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid update data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "Invalid data provided for update."
         '404':
           description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "User not found."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "An error occurred while updating the user."
 
 components:
   schemas:
     User:
       type: object
+      description: "An object that represents a user in the system."
       properties:
         _id:
           type: string
+          description: "The unique identifier for the user."
         first_name:
           type: string
+          description: "The user's first name."
         last_name:
           type: string
+          description: "The user's last name."
         email:
           type: string
+          description: "The user's email address."
         role:
           type: string
+          description: "The role assigned to the user (e.g., 'admin', 'user')."
         pets:
           type: array
           items:
             type: string
+          description: "A list of pet IDs associated with the user."
+      example:
+        _id: "60a7b8c0d2a5b5d3b8a4e9a3"
+        first_name: "John"
+        last_name: "Doe"
+        email: "john.doe@example.com"
+        role: "user"
+        pets: ["60a7b8c0d2a5b5d3b8a4e9a4"]
+    
     NewUser:
       type: object
+      description: "An object that represents the data required to create a new user."
       required:
         - first_name
         - last_name
@@ -109,23 +217,45 @@ components:
       properties:
         first_name:
           type: string
+          description: "The new user's first name."
         last_name:
           type: string
+          description: "The new user's last name."
         email:
           type: string
+          description: "The new user's email address."
         password:
           type: string
+          description: "The new user's password."
         role:
           type: string
+          description: "The role assigned to the user. Defaults to 'user' if not specified."
           default: "user"
+      example:
+        first_name: "Anna"
+        last_name: "Smith"
+        email: "anna.smith@example.com"
+        password: "securePassword123"
+        role: "user"
+
     UpdateUser:
       type: object
+      description: "An object that contains the data that can be updated for an existing user."
       properties:
         first_name:
           type: string
+          description: "The updated first name of the user."
         last_name:
           type: string
+          description: "The updated last name of the user."
         email:
           type: string
+          description: "The updated email address of the user."
         role:
           type: string
+          description: "The updated role of the user."
+      example:
+        first_name: "Carlos"
+        last_name: "Lopez"
+        email: "carlos.lopez@example.com"
+        role: "admin"

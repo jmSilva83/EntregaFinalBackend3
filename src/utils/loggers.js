@@ -17,22 +17,55 @@ const customLevelOptions = {
     },
 };
 
+const formatJSON = winston.format((info) => {
+    let message = info.message;
+    if (typeof message !== 'string') {
+        message = String(message);
+    }
+    if (message.includes('Generated pets:')) {
+        try {
+            const jsonPart = message.replace('Generated pets: ', '').trim();
+            if (
+                jsonPart &&
+                jsonPart.startsWith('{') &&
+                jsonPart.endsWith('}')
+            ) {
+                const formattedJSON = JSON.stringify(
+                    JSON.parse(jsonPart),
+                    null,
+                    2
+                );
+                info.message = `Generated pets:\n${formattedJSON}`;
+            } else {
+                info.message = `Generated pets: ${jsonPart}`;
+            }
+        } catch (error) {
+            info.message = `Generated pets (invalid JSON format): ${message}`;
+        }
+    }
+
+    return info;
+});
+
 const logger = winston.createLogger({
     levels: customLevelOptions.levels,
     transports: [
         new winston.transports.Console({
             level: 'info',
             format: winston.format.combine(
+                formatJSON(),
                 winston.format.colorize({
                     colors: customLevelOptions.colors,
                 }),
-                winston.format.simple()
+                winston.format.printf((info) => {
+                    return `${info.level}: ${info.message}`;
+                })
             ),
         }),
         new winston.transports.File({
             filename: './errors.log',
             level: 'warning',
-            format: winston.format.simple(),
+            format: winston.format.prettyPrint(),
         }),
     ],
 });
@@ -44,8 +77,8 @@ const addLogger = (req, res, next) => {
             'es-AR',
             { hour12: false }
         )}`
-    ),
-        next();
+    );
+    next();
 };
 
 export { addLogger, logger };

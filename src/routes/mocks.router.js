@@ -1,8 +1,6 @@
 import express from 'express';
 import { generatePets } from '../mocks/mockingPets.js';
 import { generateUsers } from '../mocks/mockingUsers.js';
-import User from '../dao/models/User.js';
-import Pet from '../dao/models/Pet.js';
 
 const router = express.Router();
 
@@ -17,31 +15,20 @@ router.get('/mockingusers', (req, res) => {
 });
 
 router.post('/generateData', async (req, res) => {
-    const { users, pets } = req.body;
-
-    if (!users || !pets) {
-        return res
-            .status(400)
-            .json({ error: 'Both "users" and "pets" parameters are required' });
-    }
-
     try {
-        const generatedUsers = generateUsers(users);
-        const generatedPets = generatePets(pets);
-        const insertedUsers = await User.insertMany(generatedUsers);
-        const insertedPets = await Pet.insertMany(generatedPets);
+        const { users = 0, pets = 0 } = req.body;
+        const insertedUsers = generateUsers(users);
+        const insertedPets = generatePets(pets);
+        console.log('Data generated:', { insertedUsers, insertedPets });
 
-        res.json({
+        res.status(200).json({
             message: 'Data generated successfully',
-            insertedUsers: insertedUsers.length,
-            insertedPets: insertedPets.length,
+            insertedUsers,
+            insertedPets,
         });
     } catch (error) {
-        console.error('Error generating or inserting data:', error);
-        res.status(500).json({
-            error: 'Error generating or inserting data',
-            details: error.message,
-        });
+        console.error('Error generating data:', error);
+        res.status(500).json({ error: error.message });
     }
 });
 

@@ -9,15 +9,15 @@ const numCPUs = cpus().length;
 logger.info(`Number of CPUs: ${numCPUs}`);
 
 const startServer = () => {
-    if (cluster.isPrimary) {
-        logger.info('Primary process, creating workers...');
-        for (let i = 0; i < numCPUs; i++) {
-            cluster.fork();
-        }
-        cluster.on('message', (worker) => {
-            logger.info(`Message received from worker ${worker.process.pid}`);
-        });
-    } else {
+    // if (cluster.isPrimary) {
+    //     logger.info('Primary process, creating workers...');
+    //     for (let i = 0; i < numCPUs; i++) {
+    //         cluster.fork();
+    //     }
+    //     cluster.on('message', (worker) => {
+    //         logger.info(`Message received from worker ${worker.process.pid}`);
+    //     });
+    // } else {
         logger.info(`I'm a worker process with ID ${process.pid}`);
         const server = app.listen(PORT, (err) => {
             if (err) {
@@ -46,7 +46,7 @@ const startServer = () => {
                 process.exit(0);
             });
         });
-    }
+    //}
 };
 
 export default startServer;
