@@ -37,7 +37,7 @@ AdoptMe es una aplicación backend desarrollada para la gestión de adopciones d
    ```bash
    git clone https://github.com/jmSilva83/EntregaFinalBackend3.git
    
-
+## Endpoints Principales
 | Método | Endpoint               | Descripción                               |
 |--------|-------------------------|-------------------------------------------|
 | GET    | /adoptions              | Obtiene todas las adopciones              |
