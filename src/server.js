@@ -9,6 +9,7 @@ const numCPUs = cpus().length;
 logger.info(`Number of CPUs: ${numCPUs}`);
 
 const startServer = () => {
+    //para probar lo dado en clase, lo comento para que no cargue mucho
     // if (cluster.isPrimary) {
     //     logger.info('Primary process, creating workers...');
     //     for (let i = 0; i < numCPUs; i++) {
