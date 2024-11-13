@@ -30,7 +30,9 @@ export const renderPetsPage = async (req, res) => {
     }
 };
 
-
+export const renderLoginPage = (req, res) => {
+    res.render('login', { title: 'Iniciar sesión' });
+};
 
 
 

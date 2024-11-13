@@ -24,7 +24,6 @@ body {
     padding: 20px;
 }
 
-
 /* Estilos de tarjeta */
 .card {
     background-color: rgba(50, 50, 50, 0.9);
@@ -113,8 +112,7 @@ form p a:hover {
     color: #5c0c92;
 }
 
-* Contenedor de botones en la página de bienvenida */
-.button-container {
+* Contenedor de botones en la página de bienvenida */ .button-container {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
@@ -139,7 +137,26 @@ button:hover {
 }
 
 /* Títulos de las páginas */
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     color: #ffffff;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.pagination-button:hover {
+    background-color: #0056b3;
 }

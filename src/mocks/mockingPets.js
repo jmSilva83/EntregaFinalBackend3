@@ -42,3 +42,4 @@ export const generatePets = (numPets) => {
     logger.info('Generated pets:', pets);
     return pets;
 };
+

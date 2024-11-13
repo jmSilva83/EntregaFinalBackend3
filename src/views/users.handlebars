@@ -16,6 +16,18 @@
             </div>
         {{/each}}
     </div>
+    
+    <!-- Paginación -->
+    <div class="pagination">
+        {{#if pagination.prevPage}}
+            <a href="/users?page={{pagination.prevPage}}&limit={{pagination.limit}}">Anterior</a>
+        {{/if}}
+
+        {{#if pagination.nextPage}}
+            <a href="/users?page={{pagination.nextPage}}&limit={{pagination.limit}}">Siguiente</a>
+        {{/if}}
+    </div>
+
     <a href="/" class="button">Volver a la página principal</a>
 </body>
 </html>
