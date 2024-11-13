@@ -31,6 +31,12 @@ AdoptMe es una aplicación backend desarrollada para la gestión de adopciones d
 - **Docker** y **Docker Compose**
 - **MongoDB Atlas** o cualquier instancia de MongoDB para la base de datos
 
+## Link a la Imagen en Docker Hub
+[Adoptme API en Docker Hub]https://hub.docker.com/repository/docker/jmsilva83/adoptme-backend/general
+
+## link al Deploy
+
+
 ## Instalación y Configuración
 
 1. Clona el repositorio:
