@@ -4,6 +4,7 @@ import {
     renderUsersPage,
     renderPetsPage,
     renderRegisterPage,
+    renderLoginPage,
 } from '../controllers/views.controllers.js';
 
 const router = Router();
@@ -19,5 +20,8 @@ router.get('/pets', renderPetsPage);
 
 // Ruta para visualizar el formulario de registro
 router.get('/register', renderRegisterPage);
+
+// Ruta para visualizar el formulario de login
+router.get('/login', renderLoginPage);
 
 export default router;

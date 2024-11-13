@@ -15,7 +15,6 @@ dotenv.config({
 export default {
     app: {
         PORT: process.env.PORT || 8080,
-        ADMIN_PWD: process.env.ADMIN_PASSWORD,
     },
     mongo: {
         URL: process.env.MONGO_URL,
