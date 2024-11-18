@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { Command } from 'commander';
+import { logger } from './loggers.js';
 
 const program = new Command();
 
@@ -12,6 +13,9 @@ dotenv.config({
     path: options.mode == 'dev' ? './.env.dev' : './.env.prod',
 });
 
+logger.info(`JWT_SECRET: ${process.env.JWT_SECRET || 'No definido'}`);
+logger.info(`JWT_COOKIE: ${process.env.JWT_COOKIE || 'No definido'}`);
+
 export default {
     app: {
         PORT: process.env.PORT || 8080,
@@ -21,8 +25,8 @@ export default {
     },
     auth: {
         jwt: {
-            COOKIE: process.env.JWT_COOKIE,
-            SECRET: process.env.JWT_SECRET,
+            COOKIE: process.env.JWT_COOKIE || 'coderCookie',
+            SECRET: process.env.JWT_SECRET || process.env.SECRET_KEY,
         },
     },
     mode: options.mode,
