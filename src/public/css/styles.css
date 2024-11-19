@@ -1,162 +1,315 @@
-/* Fondo de degradado en la página */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #333333, #000000);
-    background-size: cover;
-    background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #ffffff; /* Para mejorar la visibilidad del texto */
+@layer reset {
+    *:where(:not(html, iframe, canvas, img, svg, video, audio)) {
+        all: unset;
+        display: revert;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: inherit;
+        cursor: pointer;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        line-height: 1.5;
+    }
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+        display: block;
+        max-inline-size: 100%;
+    }
+
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+        letter-spacing: inherit;
+        word-spacing: inherit;
+        color: currentColor;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        overflow-wrap: break-word;
+    }
+
+    ol,
+    ul {
+        list-style: none;
+    }
+
+    :not([class]) {
+        h1&,
+        h2&,
+        h3&,
+        h4&,
+        h5&,
+        h6& {
+            margin-block: 0.75em;
+            line-height: 1.25;
+            text-wrap: balance;
+            letter-spacing: -0.05ch;
+        }
+
+        p&,
+        ol&,
+        ul& {
+            margin-block: 1em;
+        }
+
+        ol&,
+        ul& {
+            padding-inline-start: 1.5em;
+            list-style: revert;
+        }
+
+        li& {
+            margin-block: 0.5em;
+        }
+    }
 }
 
-/* Contenedor de tarjetas */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    max-width: 1200px;
-    padding: 20px;
+@layer base {
+    /* Fondo de degradado en la página */
+    body {
+        margin-top: 60px;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100dvh;
+        color: #ffffff;
+        background: linear-gradient(270deg, #6a0dad, #932f6d, #4e4376, #283e51);
+        background-size: 400% 400%;
+        background-attachment: fixed;
+        animation: dynamicGradient 15s ease infinite;
+    }
+
+    /* Contenedor de tarjetas */
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    /* Estilos de tarjeta */
+    .card {
+        background-color: rgba(50, 50, 50, 0.9);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        width: 250px;
+        text-align: center;
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Título de la tarjeta */
+    .card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #f0e6ff;
+    }
+
+    /* Texto de los detalles */
+    .card p {
+        font-size: 0.9rem;
+        color: #cccccc;
+    }
+
+    /* Contenedor del formulario */
+    .form-container {
+        background: rgba(50, 50, 50, 0.9);
+        padding: 15px 25px;
+        border-radius: 6px;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+        max-width: 350px;
+        width: 90%;
+        text-align: center;
+    }
+
+    /* Estilo de los elementos del formulario */
+    form input[type='text'],
+    form input[type='email'],
+    form input[type='password'],
+    form button {
+        width: 100%;
+        padding: 8px 0;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+    }
+
+    form input[type='text'],
+    form input[type='email'],
+    form input[type='password'] {
+        background-color: #444;
+        font-size: 0.9rem;
+    }
+
+    /* Estilo del botón */
+    form button {
+        background-color: #6a0dad;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    form button:hover {
+        background-color: #5c0c92;
+    }
+
+    /* Estilo de los enlaces dentro del formulario */
+    form p a {
+        color: #6a0dad;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* Texto del título */
+    form h2 {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    form p a:hover {
+        color: #5c0c92;
+    }
+
+    /* Contenedor de botones en la página de bienvenida */
+    .button-container {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    /* Estilo de los botones genéricos */
+    button {
+        background-color: #6a0dad;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background-color: #5c0c92;
+    }
+
+    /* Títulos de las páginas */
+    h1,
+    h2 {
+        text-align: center;
+        color: white;
+    }
+
+    p {
+        color: white;
+    }
+
+    .pagination {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .pagination-button {
+        margin: 0 5px;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+    .pagination-button:hover {
+        background-color: #0056b3;
+    }
+
+    nav {
+        z-index: 1000;
+        position: fixed;
+        top: 40px;
+        border-radius: 30px 30px 30px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: darkslateblue;
+        backdrop-filter: blur(10px);
+        color: white;
+        height: 40px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
+
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .navbar .nav-links li a:hover {
+        color: #ffd700;
+    }
+
+    .active {
+        background-color: #6a0dad;
+        border-radius: 30px 30px 30px 30px;
+        color: black;
+        transition: all 0.3s ease;
+    }
 }
 
-/* Estilos de tarjeta */
-.card {
-    background-color: rgba(50, 50, 50, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    width: 250px;
-    text-align: center;
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* Título de la tarjeta */
-.card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #f0e6ff;
-}
-
-/* Texto de los detalles */
-.card p {
-    font-size: 0.9rem;
-    color: #cccccc;
-}
-
-/* Contenedor del formulario */
-.form-container {
-    background: rgba(50, 50, 50, 0.9);
-    padding: 15px 25px;
-    border-radius: 6px;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
-    max-width: 350px;
-    width: 90%;
-    text-align: center;
-}
-
-/* Estilo de los elementos del formulario */
-form input[type='text'],
-form input[type='email'],
-form input[type='password'],
-form button {
-    width: 100%;
-    padding: 8px 0;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-}
-
-form input[type='text'],
-form input[type='email'],
-form input[type='password'] {
-    background-color: #444;
-    font-size: 0.9rem;
-}
-
-/* Estilo del botón */
-form button {
-    background-color: #6a0dad;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-form button:hover {
-    background-color: #5c0c92;
-}
-
-/* Estilo de los enlaces dentro del formulario */
-form p a {
-    color: #6a0dad;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Texto del título */
-form h2 {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-}
-
-form p a:hover {
-    color: #5c0c92;
-}
-
-* Contenedor de botones en la página de bienvenida */ .button-container {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-/* Estilo de los botones genéricos */
-button {
-    background-color: #6a0dad;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #5c0c92;
-}
-
-/* Títulos de las páginas */
-h1,
-h2 {
-    text-align: center;
-    color: #ffffff;
-}
-
-.pagination {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.pagination-button {
-    margin: 0 5px;
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.pagination-button:hover {
-    background-color: #0056b3;
+@keyframes dynamicGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }

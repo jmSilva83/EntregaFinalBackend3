@@ -1,20 +1,92 @@
+{{!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>{{title}}</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">Adoptme</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/users">Usuarios</a></li>
+            <li><a href="/pets">Mascotas</a></li>
+            <li><a href="/login">Iniciar Sesión</a></li>
+            <li><a href="/register">Registrarse</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <h1>{{title}}</h1>
+    <p>Bienvenido a Adoptme, una plataforma para la adopción de mascotas.</p>
+</body>
+</html> --}}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>{{title}}</title>
 </head>
 <body>
-    <h1>{{title}}</h1>
-    <p>Bienvenido a Adoptme, una plataforma para la adopción de mascotas.</p>
-    
-    <div class="button-container">
-        <a href="/users" class="button">Ver Usuarios Registrados</a>
-        <a href="/pets" class="button">Ver Mascotas Registradas</a>
-        <a href="/login" class="button">Iniciar Sesión</a>
-        <a href="/register" class="button">Registrarse</a>
+    <!-- Fondo dinámico -->
+    <div class="gradient-bg">
+        <svg 
+            viewBox="0 0 100vw 100vw"
+            xmlns="http://www.w3.org/2000/svg"
+            class="noiseBg">
+            <filter id="noiseFilterBg">
+                <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+            </filter>
+            <rect
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid meet"
+                filter="url(#noiseFilterBg)" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="gradients-container">
+            <div class="g1"></div>
+            <div class="g2"></div>
+            <div class="g3"></div>
+            <div class="g4"></div>
+            <div class="g5"></div>
+            <div class="interactive"></div>
+        </div>
     </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">Adoptme</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/users">Usuarios</a></li>
+            <li><a href="/pets">Mascotas</a></li>
+            <li><a href="/login">Iniciar Sesión</a></li>
+            <li><a href="/register">Registrarse</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        <h1>{{title}}</h1>
+        <p>Bienvenido a Adoptme, una plataforma para la adopción de mascotas.</p>
+    </main>
+    <script src="js/movement.js"></script>
 </body>
 </html>
