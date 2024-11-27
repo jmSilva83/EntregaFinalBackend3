@@ -5,6 +5,3 @@ node_modules/
 .env
 .env.dev
 .env.prod
-
-# Carpeta de pruebas (si decides no incluirla)
-test/
